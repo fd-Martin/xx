@@ -1,5 +1,5 @@
 import React from "react";
-import { BiSolidBookOpen } from "react-icons/bi";
+
 import { Link } from "react-router";
 
 const Logo = () => {

@@ -44,7 +44,9 @@ const ThemeToggle = () => {
       >
         <div
           className={`absolute top-0.5 left-0.5 w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-white shadow-md transform transition-transform duration-300 ${
-            theme === "light" ? "translate-x-0" : "translate-x-6 sm:translate-x-7"
+            theme === "light"
+              ? "translate-x-0"
+              : "translate-x-6 sm:translate-x-7"
           }`}
         />
       </div>

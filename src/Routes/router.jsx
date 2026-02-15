@@ -2,7 +2,7 @@ import React from "react";
 import { createBrowserRouter } from "react-router";
 import HomeLayout from "../Layouts/HomeLayout/HomeLayout";
 import Home from "../Pages/Home/Home";
-import AuthLayout from "../Layouts/AuthLayout/AuthLayout";
+import AuthLayout from "../Layouts/AutheticationLayout/AuthLayout";
 import Register from "../Pages/AuthPage/Register/Register";
 import Login from "../Pages/AuthPage/Login/Login";
 import Dashboard from "../Pages/Dashboard/Dashboard";
@@ -27,7 +27,7 @@ import ErrorPage from "../Components/ErrorPage/ErrorPage";
 import AuthError from "../Components/ErrorPage/AuthError/AuthError";
 import DashboardError from "../Components/ErrorPage/DashboardError/DashboardError";
 import BookEdited from "../Components/BookEdited/BookEdited";
-
+import DashboardHome from "../Pages/Dashboard/DashboardHome/DashboardHome";
 const Router = createBrowserRouter([
   {
     path: "/",
@@ -84,6 +84,10 @@ const Router = createBrowserRouter([
     ),
     errorElement: <DashboardError />,
     children: [
+      {
+        index: true,
+        Component: DashboardHome,
+      },
       {
         path: "my-profile",
         Component: MyProfile,
