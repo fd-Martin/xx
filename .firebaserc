@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "book-courier-c3864"
-  }
+    "default": "book-courier-3af2b",
+    "prod": "book-courier-3af2b"
+  },
+  "targets": {},
+  "etags": {}
 }
