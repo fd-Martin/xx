@@ -43,16 +43,12 @@ const Login = () => {
 
   return (
     <div className="card bg-base-100 w-full max-w-md shrink-0 shadow-2xl p-10">
-      <h1 className="text-5xl  font-bold text-secondary text-center">
-        Login now!
-      </h1>
+      <h1 className="text-5xl  font-bold  text-center">Login now!</h1>
       <div className="card-body">
         <form onSubmit={handleSubmit(handleLogin)}>
           <fieldset className="fieldset">
             {/* email */}
-            <label className="label text-primary md:text-xl font-bold">
-              Email
-            </label>
+            <label className="label  md:text-xl font-bold">Email</label>
             <input
               type="email"
               className="input my-3"
@@ -63,9 +59,7 @@ const Login = () => {
               <p className="text-red-500 font-semibold">Email is required</p>
             )}
             {/* password */}
-            <label className="label text-primary md:text-xl font-bold">
-              Password
-            </label>
+            <label className="label  md:text-xl font-bold">Password</label>
             <input
               type="password"
               className="input"
@@ -95,7 +89,7 @@ const Login = () => {
         <p>
           Didn't have an account?
           <Link state={location.state} to="/auth/register">
-            <span className="text-secondary text-xl font-bold">Register</span>
+            <span className=" text-xl font-bold">Register</span>
           </Link>
         </p>
         <SocialLogin></SocialLogin>

@@ -70,10 +70,10 @@ const AddBook = () => {
   return (
     <div className="p-6">
       <h2
-          className="text-3xl md:text-4xl font-bold 
+        className="text-3xl md:text-4xl font-bold 
           bg-linear-to-r from-primary to-secondary 
           bg-clip-text text-transparent text-center my-4"
-        >
+      >
         Add a New Book
       </h2>
       <div className="card-body max-w-3xl mx-auto">
@@ -81,9 +81,7 @@ const AddBook = () => {
           <fieldset className="fieldset grid grid-cols-1 gap-10 md:grid-cols-2 text-left">
             <div>
               {/* author name */}
-              <label className="label text-primary md:text-xl font-bold">
-                Author Name
-              </label>
+              <label className="label  md:text-xl font-bold">Author Name</label>
               <input
                 type="text"
                 defaultValue={user?.displayName}
@@ -98,7 +96,7 @@ const AddBook = () => {
                 </p>
               )}
               {/* author email */}
-              <label className="label text-primary md:text-xl font-bold">
+              <label className="label  md:text-xl font-bold">
                 Author Email
               </label>
               <input
@@ -115,7 +113,7 @@ const AddBook = () => {
                 </p>
               )}
               {/* author phonenumber */}
-              <label className="label text-primary md:text-xl font-bold">
+              <label className="label  md:text-xl font-bold">
                 Author Phone Number
               </label>
               <input
@@ -133,9 +131,7 @@ const AddBook = () => {
                 </p>
               )}
               {/* Address */}
-              <label className="label text-primary md:text-xl font-bold">
-                Address
-              </label>
+              <label className="label  md:text-xl font-bold">Address</label>
               <input
                 type="text"
                 className="input mb-3 w-full"
@@ -148,9 +144,7 @@ const AddBook = () => {
                 </p>
               )}
               {/* book Price */}
-              <label className="label text-primary md:text-xl font-bold">
-                Book Price
-              </label>
+              <label className="label  md:text-xl font-bold">Book Price</label>
               <input
                 type="number"
                 className="input mb-3 w-full"
@@ -165,9 +159,7 @@ const AddBook = () => {
             </div>
             <div>
               {/* book name */}
-              <label className="label text-primary md:text-xl font-bold">
-                Book Name
-              </label>
+              <label className="label  md:text-xl font-bold">Book Name</label>
               <input
                 type="text"
                 className="input mb-3 w-full"
@@ -182,9 +174,7 @@ const AddBook = () => {
               {/* book image
             
              */}
-              <label className="label text-primary md:text-xl font-bold">
-                Book Image
-              </label>
+              <label className="label  md:text-xl font-bold">Book Image</label>
               <input
                 type="file"
                 className="file-input mb-3 w-full"
@@ -196,9 +186,7 @@ const AddBook = () => {
                 </p>
               )}
               {/* book status */}
-              <label className="label text-primary md:text-xl font-bold">
-                Book Status
-              </label>
+              <label className="label  md:text-xl font-bold">Book Status</label>
               <select
                 defaultValue="Pick a status"
                 className="select mb-3 w-full"
@@ -212,7 +200,7 @@ const AddBook = () => {
                 <p className="text-red-500 font-semibold">Price is required</p>
               )}
               {/* book description */}
-              <label className="label text-primary md:text-xl font-bold">
+              <label className="label  md:text-xl font-bold">
                 Book Description
               </label>
               <textarea

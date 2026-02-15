@@ -102,7 +102,7 @@ const BookEdited = () => {
             <fieldset className="fieldset grid grid-cols-1 gap-10 md:grid-cols-2 text-left">
               <div>
                 {/* author name */}
-                <label className="label text-primary md:text-xl font-bold">
+                <label className="label  md:text-xl font-bold">
                   Author Name
                 </label>
                 <input
@@ -119,7 +119,7 @@ const BookEdited = () => {
                   </p>
                 )}
                 {/* author email */}
-                <label className="label text-primary md:text-xl font-bold">
+                <label className="label  md:text-xl font-bold">
                   Author Email
                 </label>
                 <input
@@ -136,7 +136,7 @@ const BookEdited = () => {
                   </p>
                 )}
                 {/* author phonenumber */}
-                <label className="label text-primary md:text-xl font-bold">
+                <label className="label  md:text-xl font-bold">
                   Author Phone Number
                 </label>
                 <input
@@ -155,9 +155,7 @@ const BookEdited = () => {
                   </p>
                 )}
                 {/* Address */}
-                <label className="label text-primary md:text-xl font-bold">
-                  Address
-                </label>
+                <label className="label  md:text-xl font-bold">Address</label>
                 <input
                   defaultValue={selectedBook.address}
                   type="text"
@@ -171,7 +169,7 @@ const BookEdited = () => {
                   </p>
                 )}
                 {/* book Price */}
-                <label className="label text-primary md:text-xl font-bold">
+                <label className="label  md:text-xl font-bold">
                   Book Price
                 </label>
                 <input
@@ -189,9 +187,7 @@ const BookEdited = () => {
               </div>
               <div>
                 {/* book name */}
-                <label className="label text-primary md:text-xl font-bold">
-                  Book Name
-                </label>
+                <label className="label  md:text-xl font-bold">Book Name</label>
                 <input
                   defaultValue={selectedBook.bookName}
                   type="text"
@@ -207,7 +203,7 @@ const BookEdited = () => {
                 {/* book image
             
              */}
-                <label className="label text-primary md:text-xl font-bold">
+                <label className="label  md:text-xl font-bold">
                   Book Image
                 </label>
                 <input
@@ -222,7 +218,7 @@ const BookEdited = () => {
                   </p>
                 )}
                 {/* book status */}
-                <label className="label text-primary md:text-xl font-bold">
+                <label className="label  md:text-xl font-bold">
                   Book Status
                 </label>
                 <select
@@ -240,7 +236,7 @@ const BookEdited = () => {
                   </p>
                 )}
                 {/* book description */}
-                <label className="label text-primary md:text-xl font-bold">
+                <label className="label  md:text-xl font-bold">
                   Book Description
                 </label>
                 <textarea

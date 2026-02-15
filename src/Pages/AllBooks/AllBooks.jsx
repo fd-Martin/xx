@@ -8,11 +8,11 @@ const AllBooks = () => {
   const [currentPage, setCurrentPage] = useState(0);
   const [searchText, setSearchText] = useState("");
   const limit = 8;
-  const axiosGeneral = useAxios();
+  const axiosInstance = useAxios();
   const { data, isLoading } = useQuery({
     queryKey: ["all-books", searchText, currentPage],
     queryFn: async () => {
-      const res = await axiosGeneral.get(
+      const res = await axiosInstance.get(
         `/all-books?status=published&limit=${limit}&skip=${
           currentPage * limit
         }&searchText=${searchText}`,
@@ -67,7 +67,9 @@ const AllBooks = () => {
             </svg>
             <input type="search" name="search" placeholder="Search" />
           </label>
-          <button className="btn btn-sm md:btn-md btn-primary rounded-r-4xl">Search</button>
+          <button className="btn btn-sm md:btn-md btn-primary rounded-r-4xl">
+            Search
+          </button>
         </form>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 my-8">

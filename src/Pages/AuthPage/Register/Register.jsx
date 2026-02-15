@@ -3,20 +3,23 @@ import { useForm } from "react-hook-form";
 import useAuth from "../../../hooks/useAuth";
 import axios from "axios";
 import Swal from "sweetalert2";
-import Loading from "../../../Components/Loading/Loading";
-import { Link,  useNavigate } from "react-router";
+
+import { Link, useNavigate } from "react-router";
 import SocialLogin from "../../../Components/SocialLogin/SocialLogin";
 import useAxios from "../../../hooks/useAxios";
-
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+import Loading from "../../../Components/Loading/Loading";
 const Register = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  const axiosGeneral = useAxios();
-  const { createUser, updateUserProfile } = useAuth();
+  const axiosInstance = useAxios();
+  const [showPassword, setShowPassword] = useState(false);
+  const { createUser, updateUserProfile, resetPassword } = useAuth();
 
   const {
     register,
     handleSubmit,
+    getValues,
     formState: { errors },
   } = useForm();
 
@@ -49,7 +52,7 @@ const Register = () => {
               photoURL: photo,
               email: data.email,
             };
-            axiosGeneral.post("/users", user).then((res) => {
+            axiosInstance.post("/users", user).then((res) => {
               if (res.data.insertedId) {
                 navigate("/");
                 Swal.fire({
@@ -72,89 +75,250 @@ const Register = () => {
     // console.log(data);
   };
 
+  const handleResetPassword = () => {
+    const email = getValues("email"); // get the email entered in the form
+    if (!email) {
+      return Swal.fire({
+        icon: "warning",
+        title: "Please enter your email first",
+      });
+    }
+
+    resetPassword(email)
+      .then(() => {
+        Swal.fire({
+          icon: "success",
+          title: "Password reset email sent!",
+          text: "Check your inbox for further instructions.",
+        });
+      })
+      .catch((err) => {
+        Swal.fire({
+          icon: "error",
+          title: "Error",
+          text: err.message,
+        });
+      });
+  };
+
   if (loading) {
     return <Loading></Loading>;
   }
 
   return (
-    <div className="card bg-base-100 w-full max-w-md shrink-0 shadow-2xl p-10">
-      <h1 className="text-5xl font-bold text-secondary text-center">Register now!</h1>
-      <div className="card-body p-10">
-        <form onSubmit={handleSubmit(handleRegistration)}>
-          <fieldset className="fieldset">
-            {/* name */}
-            <label className="label text-primary md:text-xl font-bold">
-              Name
-            </label>
-            <input
-              type="text"
-              className="input mb-3 w-full"
-              placeholder="Your Name"
-              {...register("name", { required: true })}
-            />
-            {errors.name?.type === "required" && (
-              <p className="text-red-500 font-semibold">Name is required</p>
-            )}
-            {/* photo */}
-            <label className="label text-primary md:text-xl font-bold">
-              Photo
-            </label>
-            <input
-              type="file"
-              className="file-input w-full"
-              {...register("photo", { required: true })}
-            />
-            {errors.photo?.type === "required" && (
-              <p className="text-red-500 font-semibold">Photo is required</p>
-            )}
-            {/* email */}
-            <label className="label text-primary md:text-xl font-bold">
-              Email
-            </label>
-            <input
-              type="email"
-              className="input my-3 w-full"
-              placeholder="Email"
-              {...register("email", { required: true })}
-            />
-            {errors.email?.type === "required" && (
-              <p className="text-red-500 font-semibold">Email is required</p>
-            )}
-            {/* password */}
-            <label className="label text-primary md:text-xl font-bold">
-              Password
-            </label>
-            <input
-              type="password"
-              className="input w-full"
-              placeholder="Password"
-              {...register("password", {
-                required: true,
-                minLength: 6,
-                pattern:
-                  /^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+])[A-Za-z\d!@#$%^&*()_+]{6,}$/,
-              })}
-            />
+    // <div className="card bg-base-100 w-full max-w-md shrink-0 shadow-2xl p-10">
+    //   <h1 className="text-5xl font-bold  text-center">Register now!</h1>
+    //   <div className="card-body p-10">
+    //     <form onSubmit={handleSubmit(handleRegistration)}>
+    //       <fieldset className="fieldset">
+    //         {/* name */}
+    //         <label className="label  md:text-xl font-bold">Name</label>
+    //         <input
+    //           type="text"
+    //           className="input mb-3 w-full"
+    //           placeholder="Your Name"
+    //           {...register("name", { required: true })}
+    //         />
+    //         {errors.name?.type === "required" && (
+    //           <p className="text-red-500 font-semibold">Name is required</p>
+    //         )}
+    //         {/* photo */}
+    //         <label className="label  md:text-xl font-bold">Photo</label>
+    //         <input
+    //           type="file"
+    //           className="file-input w-full"
+    //           {...register("photo", { required: true })}
+    //         />
+    //         {errors.photo?.type === "required" && (
+    //           <p className="text-red-500 font-semibold">Photo is required</p>
+    //         )}
+    //         {/* email */}
+    //         <label className="label  md:text-xl font-bold">Email</label>
+    //         <input
+    //           type="email"
+    //           className="input my-3 w-full"
+    //           placeholder="Email"
+    //           {...register("email", { required: true })}
+    //         />
+    //         {errors.email?.type === "required" && (
+    //           <p className="text-red-500 font-semibold">Email is required</p>
+    //         )}
+    //         {/* password */}
+    //         <label className="label  md:text-xl font-bold">Password</label>
+    //         <div className="relative">
+    //           <input
+    //             type={showPassword ? "text" : "password"}
+    //             className="input w-full pr-12"
+    //             placeholder="Password"
+    //             {...register("password", {
+    //               required: true,
+    //               minLength: 6,
+    //               pattern:
+    //                 /^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+])[A-Za-z\d!@#$%^&*()_+]{6,}$/,
+    //             })}
+    //           />
 
-            {errors.password && (
-              <p className="text-red-500 font-semibold">
-                Password should be one uppercase, one lowercase, one special
-                character and must be 6 digit
-              </p>
-            )}
+    //           <button
+    //             type="button"
+    //             onClick={() => setShowPassword(!showPassword)}
+    //             className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer"
+    //           >
+    //             {showPassword ? <FaEyeSlash size={20} /> : <FaEye size={20} />}
+    //           </button>
+    //         </div>
+
+    //         {errors.password && (
+    //           <p className="text-red-500 font-semibold">
+    //             Password should be one uppercase, one lowercase, one special
+    //             character and must be 6 digit
+    //           </p>
+    //         )}
+    //         <div>
+    //           <button
+    //             type="button"
+    //             onClick={handleResetPassword}
+    //             className="link link-hover"
+    //           >
+    //             Forgot password?
+    //           </button>
+    //         </div>
+    //         <button className="btn btn-primary mt-4">Register</button>
+    //       </fieldset>
+    //     </form>
+    //     <p>
+    //       Already have an account?
+    //       <Link to="/auth/login">
+    //         <span className=" text-xl font-bold"> Login</span>
+    //       </Link>
+    //     </p>
+    //     <SocialLogin></SocialLogin>
+    //   </div>
+    // </div>
+    <div className="min-h-screen flex items-center justify-center ">
+      <div className="card w-full max-w-md shadow-xl rounded-2xl p-8 md:p-10">
+        <h1 className="text-4xl md:text-5xl font-bold text-center text-primary mb-6">
+          Register Now!
+        </h1>
+
+        <form onSubmit={handleSubmit(handleRegistration)}>
+          <fieldset className="space-y-4">
+            {/* Name */}
             <div>
-              <a className="link link-hover">Forgot password?</a>
+              <label className="block text-lg font-semibold text-gray-700">
+                Name
+              </label>
+              <input
+                type="text"
+                placeholder="Your Name"
+                className="input input-bordered w-full mt-1 rounded-lg  focus:outline-none focus:border-gray-600"
+                {...register("name", { required: true })}
+              />
+              {errors.name && (
+                <p className="text-red-500 mt-1">Name is required</p>
+              )}
             </div>
-            <button className="btn btn-primary mt-4">Register</button>
+
+            {/* Photo */}
+            <div>
+              <label className="block text-lg font-semibold text-gray-700">
+                Photo
+              </label>
+              <input
+                type="file"
+                className="file-input file-input-bordered w-full mt-1 rounded-lg focus:outline-none focus:border-gray-600"
+                {...register("photo", { required: true })}
+              />
+              {errors.photo && (
+                <p className="text-red-500 mt-1">Photo is required</p>
+              )}
+            </div>
+
+            {/* Email */}
+            <div>
+              <label className="block text-lg font-semibold text-gray-700">
+                Email
+              </label>
+              <input
+                type="email"
+                placeholder="Your Email"
+                className="input input-bordered w-full mt-1 rounded-lg focus:outline-none focus:border-gray-600"
+                {...register("email", { required: true })}
+              />
+              {errors.email && (
+                <p className="text-red-500 mt-1">Email is required</p>
+              )}
+            </div>
+
+            {/* Password */}
+            <div>
+              <label className="block text-lg font-semibold text-gray-700">
+                Password
+              </label>
+              <div className="relative mt-1">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  placeholder="Password"
+                  className="input input-bordered w-full pr-12 rounded-lg focus:outline-none focus:border-gray-600"
+                  {...register("password", {
+                    required: true,
+                    minLength: 6,
+                    pattern:
+                      /^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+]).{6,}$/,
+                  })}
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
+                >
+                  {showPassword ? (
+                    <FaEyeSlash size={20} />
+                  ) : (
+                    <FaEye size={20} />
+                  )}
+                </button>
+              </div>
+              {errors.password && (
+                <p className="text-red-500 mt-1 text-sm">
+                  Password must contain uppercase, lowercase, special character,
+                  and minimum 6 characters
+                </p>
+              )}
+            </div>
+
+            {/* Forgot Password */}
+            <div className="text-right">
+              <button
+                type="button"
+                onClick={handleResetPassword}
+                className="text-sm text-secondary hover:underline"
+              >
+                Forgot password?
+              </button>
+            </div>
+
+            {/* Register Button */}
+            <button className="btn btn-primary w-full mt-4 rounded-lg focus:outline-none focus:border-gray-600 hover:bg-secondary hover:text-white">
+              Register
+            </button>
           </fieldset>
         </form>
-        <p>
-          Already have an account?
-          <Link to="/auth/login">
-            <span className="text-secondary text-xl font-bold"> Login</span>
+
+        {/* Login Link */}
+        <p className="mt-6 text-center text-gray-700">
+          Already have an account?{" "}
+          <Link
+            to="/auth/login"
+            className="text-secondary font-semibold hover:underline"
+          >
+            Login
           </Link>
         </p>
-      <SocialLogin></SocialLogin>
+
+        {/* Social Login */}
+        <div className="mt-4">
+          <SocialLogin />
+        </div>
       </div>
     </div>
   );

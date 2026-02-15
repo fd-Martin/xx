@@ -16,7 +16,7 @@ const Slider = ({ book }) => {
       {/* Info */}
       <div className="md:p-6 flex flex-col justify-between bg-base-300 w-full flex-1">
         <div>
-          <h2 className="text-xs md:text-2xl font-bold text-primary mb-2">
+          <h2 className="text-xs md:text-2xl font-bold  mb-2">
             {book.bookName}
           </h2>
           <p className="text-gray-600 text-sm mb-4 line-clamp-3 hidden md:block">

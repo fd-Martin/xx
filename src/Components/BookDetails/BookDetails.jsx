@@ -145,9 +145,7 @@ const BookDetails = () => {
             alt={book?.bookName}
             className="w-full h-150 rounded-xl shadow-lg hover:scale-105 transition-transform duration-300"
           />
-          <h1 className="text-4xl font-bold text-primary my-5">
-            {book?.bookName}
-          </h1>
+          <h1 className="text-4xl font-bold  my-5">{book?.bookName}</h1>
 
           <p className="text-gray-500 flex items-center gap-2">
             <FaUser /> Author:
@@ -160,9 +158,7 @@ const BookDetails = () => {
           <div>
             {reviewPermission?.canReview && !reviewSubmitted && (
               <div className="mt-6 rounded-xl p-6 bg-indigo-50 border border-indigo-200 shadow-md">
-                <h3 className="text-xl text-primary mb-2 font-bold">
-                  Write a Review
-                </h3>
+                <h3 className="text-xl  mb-2 font-bold">Write a Review</h3>
 
                 <form onSubmit={handleReviewSubmit(handleSubmitReview)}>
                   <textarea
@@ -200,7 +196,7 @@ const BookDetails = () => {
             </p>
 
             {/* Price */}
-            <div className="flex justify-between text-3xl font-bold text-secondary p-3">
+            <div className="flex justify-between text-3xl font-bold  p-3">
               <h2>৳ {book?.price}</h2>
               {user?.email === book?.authorEmail && (
                 <Link to={`/dashboard/edit-book/${book?._id}`}>
@@ -243,7 +239,7 @@ const BookDetails = () => {
       <dialog ref={orderRef} className="modal">
         <div className="modal-box text-accent">
           <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
-            <h2 className="text-3xl font-bold text-primary text-center mt-2">
+            <h2 className="text-3xl font-bold  text-center mt-2">
               Confirm Order
             </h2>
             <div className="card-body">

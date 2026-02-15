@@ -6,11 +6,11 @@ import Loading from "../Components/Loading/Loading";
 
 const useRole = () => {
   const { user } = useAuth();
-  const axiosGeneral = useAxios();
+  const axiosInstance = useAxios();
   const { data: role, isLoading: roleLoading } = useQuery({
     queryKey: ["user-role", user?.email],
     queryFn: async () => {
-      const res = await axiosGeneral.get(`/users/${user?.email}/role`);
+      const res = await axiosInstance.get(`/users/${user?.email}/role`);
       return res.data.role;
     },
   });

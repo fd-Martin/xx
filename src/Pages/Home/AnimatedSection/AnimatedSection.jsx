@@ -74,12 +74,10 @@ const AnimatedSection = ({ allDataCount }) => {
           >
             <div>
               <div className="stat-title text-2xl font-bold">{title}</div>
-              <div className="stat-value text-primary">
-                {allDataCount?.[valueKey] ?? 0}
-              </div>
+              <div className="stat-value ">{allDataCount?.[valueKey] ?? 0}</div>
               <div className="stat-desc">Till Now</div>
             </div>
-            <div className="text-primary">{icon}</div>
+            <div className="">{icon}</div>
           </motion.div>
         ))}
       </div>

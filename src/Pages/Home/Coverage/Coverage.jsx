@@ -94,7 +94,7 @@ const Coverage = ({ mapData }) => {
                   type="search"
                   name="location"
                   placeholder="Search by district..."
-                  className="placeholder:text-primary/60 outline-none bg-transparent"
+                  className="placeholder:/60 outline-none bg-transparent"
                 />
               </label>
 
@@ -133,9 +133,7 @@ const Coverage = ({ mapData }) => {
               position={[center.latitude, center.longitude]}
             >
               <Popup>
-                <h3 className="font-bold text-primary text-lg">
-                  📚 {center.city}
-                </h3>
+                <h3 className="font-bold  text-lg">📚 {center.city}</h3>
                 <p className="text-sm mt-1 text-gray-600">
                   {center.covered_area.join(", ")}
                 </p>

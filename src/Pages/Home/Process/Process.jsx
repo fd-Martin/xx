@@ -56,7 +56,7 @@ const Process = () => {
             whileInView="visible"
             className=" shadow-xl p-8"
           >
-            <span className="text-primary ">{step.icon}</span>
+            <span className=" ">{step.icon}</span>
             <h2 className="text-xl font-bold mt-5">{step.title}</h2>
             <p className="text-neutral">{step.description}</p>
           </motion.div>

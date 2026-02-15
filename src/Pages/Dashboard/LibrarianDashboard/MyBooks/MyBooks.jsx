@@ -53,7 +53,7 @@ const MyBooks = () => {
                 </td>
                 <td>
                   <Link to={`/book-details/${book._id}`}>
-                    <span className="text-secondary font-bold hover:underline">
+                    <span className=" font-bold hover:underline">
                       {book.bookName}
                     </span>
                   </Link>

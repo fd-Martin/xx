@@ -13,7 +13,7 @@ const Invoices = () => {
     queryKey: ["payment-history", user?.email],
     queryFn: async () => {
       const res = await axiosSecure.get(
-        `payments-history?email=${user?.email}`
+        `payments-history?email=${user?.email}`,
       );
       return res.data;
     },
@@ -34,7 +34,7 @@ const Invoices = () => {
           </h2>
           <p className="text-sm font-bold text-slate-400 mt-2">
             Total Payments{" "}
-            <span className="font-bold text-lg text-primary mx-1">
+            <span className="font-bold text-lg  mx-1">
               {paymentHistory.length}
             </span>
           </p>

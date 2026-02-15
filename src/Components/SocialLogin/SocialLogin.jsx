@@ -8,7 +8,7 @@ const SocialLogin = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { signInWithGoogle } = useAuth();
-  const axiosGeneral = useAxios();
+  const axiosInstance = useAxios();
 
   const handleSocialLogin = () => {
     setLoading(true);
@@ -20,7 +20,7 @@ const SocialLogin = () => {
           email: res.user.email,
         };
         if (res.user) {
-          axiosGeneral.post("/users", userInfo).then(() => {
+          axiosInstance.post("/users", userInfo).then(() => {
             navigate("/");
             setLoading(false);
           });

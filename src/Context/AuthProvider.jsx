@@ -38,7 +38,7 @@ const AuthProvider = ({ children }) => {
   };
 
   //forget password
-  const forgetPassword = (email) => {
+  const resetPassword = (email) => {
     return sendPasswordResetEmail(auth, email);
   };
 
@@ -66,7 +66,7 @@ const AuthProvider = ({ children }) => {
     signInUser,
     signInWithGoogle,
     updateUserProfile,
-    forgetPassword,
+    resetPassword,
     signOutUser,
   };
   return <AuthContext value={authInfo}>{children}</AuthContext>;

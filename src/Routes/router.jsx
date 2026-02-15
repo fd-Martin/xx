@@ -57,7 +57,7 @@ const Router = createBrowserRouter([
     ],
   },
   {
-    path: "auth",
+    path: "authentication",
     Component: AuthLayout,
     errorElement: <AuthError />,
     children: [

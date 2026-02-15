@@ -11,11 +11,11 @@ import Process from "./Process/Process";
 import FAQ from "./FAQ/FAQ";
 
 const Home = () => {
-  const axiosGeneral = useAxios();
+  const axiosInstance = useAxios();
   const { data: latestBooks = [], isLoading: dataLoading } = useQuery({
     queryKey: ["latest-books"],
     queryFn: async () => {
-      const res = await axiosGeneral.get(`/latest-books`);
+      const res = await axiosInstance.get(`/latest-books`);
       return res.data;
     },
   });
@@ -23,7 +23,7 @@ const Home = () => {
   const { data: mapData, isLoading: mapLoading } = useQuery({
     queryKey: ["mapData"],
     queryFn: async () => {
-      const res = await axiosGeneral.get("/coverage");
+      const res = await axiosInstance.get("/coverage");
       return res.data;
     },
   });
@@ -31,7 +31,7 @@ const Home = () => {
   const { data: allDataCount, isLoading: countLoading } = useQuery({
     queryKey: ["count-all-data"],
     queryFn: async () => {
-      const res = await axiosGeneral.get("/all-data-count");
+      const res = await axiosInstance.get("/all-data-count");
       return res.data;
     },
   });

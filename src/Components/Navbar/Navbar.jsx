@@ -11,13 +11,13 @@ const Navbar = () => {
 
   const links = (
     <>
-      <li className="md:text-lg font-semibold hover:text-primary transition-colors duration-300">
+      <li className="md:text-lg font-semibold hover: transition-colors duration-300">
         <NavLink to="/">Home</NavLink>
       </li>
-      <li className="md:text-lg font-semibold hover:text-primary transition-colors duration-300">
+      <li className="md:text-lg font-semibold hover: transition-colors duration-300">
         <NavLink to="/all-books">All Books</NavLink>
       </li>
-      <li className="md:text-lg font-semibold hover:text-primary transition-colors duration-300">
+      <li className="md:text-lg font-semibold hover: transition-colors duration-300">
         <NavLink
           to={
             role === "admin"
@@ -46,7 +46,7 @@ const Navbar = () => {
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6 text-primary"
+              className="h-6 w-6 "
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"

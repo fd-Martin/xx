@@ -79,7 +79,7 @@ const MyOrders = () => {
       {/* Empty State */}
       {myOrders.length === 0 ? (
         <div className="flex flex-col items-center justify-center mt-20">
-          <FaBook className="text-7xl text-secondary mb-4" />
+          <FaBook className="text-7xl  mb-4" />
           <p className="text-2xl font-bold text-accent">No Orders Yet</p>
           <Link to="/all-books" className="mt-4 btn btn-secondary btn-outline">
             Browse Books
@@ -106,7 +106,7 @@ const MyOrders = () => {
                     <td>
                       <Link
                         to={`/book-details/${order.bookId}`}
-                        className="font-semibold text-primary hover:underline flex items-center gap-2"
+                        className="font-semibold  hover:underline flex items-center gap-2"
                       >
                         <FaBook />
                         {order?.bookName}

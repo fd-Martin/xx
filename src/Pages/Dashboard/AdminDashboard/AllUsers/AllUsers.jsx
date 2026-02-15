@@ -84,7 +84,7 @@ const AllUsers = () => {
                         <div className="font-bold text-lg">
                           {user?.displayName}
                         </div>
-                        <div className="inline-block mt-1 px-2 py-0.5 text-xs rounded-full bg-primary/10 text-primary font-semibold">
+                        <div className="inline-block mt-1 px-2 py-0.5 text-xs rounded-full bg-primary/10  font-semibold">
                           {user?.role}
                         </div>
                       </div>
