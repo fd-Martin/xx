@@ -76,7 +76,7 @@ const Register = () => {
   };
 
   const handleResetPassword = () => {
-    const email = getValues("email"); // get the email entered in the form
+    const email = getValues("email");
     if (!email) {
       return Swal.fire({
         icon: "warning",
@@ -106,94 +106,6 @@ const Register = () => {
   }
 
   return (
-    // <div className="card bg-base-100 w-full max-w-md shrink-0 shadow-2xl p-10">
-    //   <h1 className="text-5xl font-bold  text-center">Register now!</h1>
-    //   <div className="card-body p-10">
-    //     <form onSubmit={handleSubmit(handleRegistration)}>
-    //       <fieldset className="fieldset">
-    //         {/* name */}
-    //         <label className="label  md:text-xl font-bold">Name</label>
-    //         <input
-    //           type="text"
-    //           className="input mb-3 w-full"
-    //           placeholder="Your Name"
-    //           {...register("name", { required: true })}
-    //         />
-    //         {errors.name?.type === "required" && (
-    //           <p className="text-red-500 font-semibold">Name is required</p>
-    //         )}
-    //         {/* photo */}
-    //         <label className="label  md:text-xl font-bold">Photo</label>
-    //         <input
-    //           type="file"
-    //           className="file-input w-full"
-    //           {...register("photo", { required: true })}
-    //         />
-    //         {errors.photo?.type === "required" && (
-    //           <p className="text-red-500 font-semibold">Photo is required</p>
-    //         )}
-    //         {/* email */}
-    //         <label className="label  md:text-xl font-bold">Email</label>
-    //         <input
-    //           type="email"
-    //           className="input my-3 w-full"
-    //           placeholder="Email"
-    //           {...register("email", { required: true })}
-    //         />
-    //         {errors.email?.type === "required" && (
-    //           <p className="text-red-500 font-semibold">Email is required</p>
-    //         )}
-    //         {/* password */}
-    //         <label className="label  md:text-xl font-bold">Password</label>
-    //         <div className="relative">
-    //           <input
-    //             type={showPassword ? "text" : "password"}
-    //             className="input w-full pr-12"
-    //             placeholder="Password"
-    //             {...register("password", {
-    //               required: true,
-    //               minLength: 6,
-    //               pattern:
-    //                 /^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+])[A-Za-z\d!@#$%^&*()_+]{6,}$/,
-    //             })}
-    //           />
-
-    //           <button
-    //             type="button"
-    //             onClick={() => setShowPassword(!showPassword)}
-    //             className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer"
-    //           >
-    //             {showPassword ? <FaEyeSlash size={20} /> : <FaEye size={20} />}
-    //           </button>
-    //         </div>
-
-    //         {errors.password && (
-    //           <p className="text-red-500 font-semibold">
-    //             Password should be one uppercase, one lowercase, one special
-    //             character and must be 6 digit
-    //           </p>
-    //         )}
-    //         <div>
-    //           <button
-    //             type="button"
-    //             onClick={handleResetPassword}
-    //             className="link link-hover"
-    //           >
-    //             Forgot password?
-    //           </button>
-    //         </div>
-    //         <button className="btn btn-primary mt-4">Register</button>
-    //       </fieldset>
-    //     </form>
-    //     <p>
-    //       Already have an account?
-    //       <Link to="/auth/login">
-    //         <span className=" text-xl font-bold"> Login</span>
-    //       </Link>
-    //     </p>
-    //     <SocialLogin></SocialLogin>
-    //   </div>
-    // </div>
     <div className="min-h-screen flex items-center justify-center ">
       <div className="card w-full max-w-md shadow-xl rounded-2xl p-8 md:p-10">
         <h1 className="text-4xl md:text-5xl font-bold text-center text-primary mb-6">

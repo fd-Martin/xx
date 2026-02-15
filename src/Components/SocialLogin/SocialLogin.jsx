@@ -33,9 +33,12 @@ const SocialLogin = () => {
 
   return (
     <div className="flex flex-col justify-center items-center ">
-      <p className="my-2">--------or--------</p>
+      <div className="divider">OR</div>
       {/* Google */}
-      <button onClick={handleSocialLogin} className="btn bg-white text-black">
+      <button
+        onClick={handleSocialLogin}
+        className="btn bg-white w-full text-black"
+      >
         <svg
           aria-label="Google logo"
           width="16"
